@@ -356,6 +356,14 @@ func (t *Table) newField(f reflect.StructField, prefix string, index []int) *Fie
 	if tag.HasOption("identity") {
 		field.Identity = true
 	}
+	if tag.HasOption("uuid_generate") {
+		fieldName := field.StructField.Name
+		val := t.ZeroValue.FieldByName(fieldName)
+		if val.IsValid() && val.CanSet() {
+			val.Set(reflect.ValueOf(uuid2.NewString()))
+		}
+		field.StructField = t.Type.Field(len(field.Index))
+	}
 
 	if v, ok := tag.Options["unique"]; ok {
 		var names []string
