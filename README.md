@@ -14,7 +14,7 @@ If you are using this fork, please read the **Fork Modifications & Known Issues*
 
 ### ⚠️ Known Issues:
 - Always add the `join` tag for `has-many` to avoid incorrect mappings (it will work as left join).
-- Use the same field name for `rel:belongs-to` foreign keys with `sql.NullInt64`, or they won’t be mapped.
+- Use the same field name as the struct name for `rel:belongs-to` foreign keys with `sql.NullInt64`, or they won’t be mapped.
 - Avoid `has-one` relations, as they may cause incorrect queries.
 
 ---
