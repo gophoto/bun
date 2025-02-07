@@ -1,3 +1,26 @@
+# Bun ORM (Forked Version)
+
+🚨 **This is a fork of Bun ORM with additional features and modifications.**
+For general usage, refer to the original Bun documentation below.  
+If you are using this fork, please read the **Fork Modifications & Known Issues** section.
+
+---
+
+## Fork Modifications & Known Issues
+### 🔹 New Features:
+- **`left_join` tag**: Added support for marking `rel:belongs-to` as a left join.
+- **`join` tag**: Now explicitly sets an inner join for `rel:belongs-to`.
+- **Fixed mapping of `has-many`** when using `sql.NullInt64` as a foreign key.
+
+### ⚠️ Known Issues:
+- Always add the `join` tag for `has-many` to avoid incorrect mappings.
+- Use the same field name for `rel:belongs-to` foreign keys with `sql.NullInt64`, or they won’t be mapped.
+- Avoid `has-one` relations, as they may cause incorrect queries.
+
+---
+
+## Original Bun ORM Documentation
+
 # SQL-first Golang ORM for PostgreSQL, MySQL, MSSQL, and SQLite
 
 [![build workflow](https://github.com/uptrace/bun/actions/workflows/build.yml/badge.svg)](https://github.com/uptrace/bun/actions)
