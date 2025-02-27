@@ -15,7 +15,8 @@ If you are using this fork, please read the **Fork Modifications & Known Issues*
 ### ⚠️ Known Issues:
 - Always add the `join` tag for `has-many` to avoid incorrect mappings (it will work as left join).
 - Use the same field name as the struct name for `rel:belongs-to` foreign keys with `sql.NullInt64`, or they won’t be mapped.
-- Avoid `has-one` relations, as they may cause incorrect queries.
+- Avoid `has-one` relations tag, as it will create incorrect queries.
+- Avoid `belongs-to` relations tag for tables with many2one or many2many relation, as it will create incorrect queries.
 - Loading nested relations will create join based on the struct tags. That means if relation has `left_join` tag but nested relation has `join` tag it will behave as the first relation also has a `join` tag.
 
 ---
